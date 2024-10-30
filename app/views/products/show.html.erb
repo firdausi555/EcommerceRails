@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+<div>
+  <%= link_to "Edit this product", edit_product_path(@product) %> |
+  <%= link_to "Back to products", products_path %>
+  <% if @product.image_url.present? %>
+  <div>
+    <%= image_tag @product.image_url, alt: @product.title %>
+  </div>
+<% else %>
+  <p>No image available.</p>
+<% end %>
+
+  <%= button_to "Destroy this product", @product, method: :delete %>
+</div>
