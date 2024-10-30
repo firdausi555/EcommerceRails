@@ -1,15 +1,26 @@
-
-
-/* Custom styles */
-.notice {
-    color: green;
-    font-weight: bold;
+.card-img-top {
+    width: 100%;          /* Make the image fill the card width */
+    height: 150px;       /* Set a smaller fixed height */
+    object-fit: cover;   /* Crop the image to fill the space while maintaining aspect ratio */
 }
 
-.card {
-    transition: transform 0.2s;
+.placeholder-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;       /* Match the height of the card image */
+    background-color: #f8f9fa; /* Light background for the placeholder */
+    color: #6c757d;      /* Text color for the placeholder */
+    border: 1px solid #dee2e6; /* Optional border for visibility */
 }
 
-.card:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
+/* Optional: Adjust for responsiveness */
+@media (max-width: 768px) {
+    .card-img-top {
+        height: 100px;  /* Further reduce height for smaller screens */
+    }
+
+    .placeholder-image {
+        height: 100px;  /* Match the height of the placeholder */
+    }
 }
