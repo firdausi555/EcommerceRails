@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg sticky-top" style="background: linear-gradient(to right, #00aaff, #0044cc);">
+  <div class="container ">
+
+  <%= link_to image_tag('logo.png', alt: 'Logo', style: 'height: 40px; margin-right: 0.5rem;') + ' SlipKart', products_path, class: "navbar-brand text-white", style: "font-size: 1.8rem;" %>
+
+
+
+    
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto"> <!-- Left section -->
+        <li class="nav-item">
+          <%= link_to 'About Us', products_path, class: 'nav-link text-white' %>
+        </li>
+      </ul>
+      </div>
+      <div class="d-flex align-items-center absolute right-0"> <!-- Right-aligned items -->
+        
+        <%= link_to '<i class="fas fa-envelope text-white"></i>'.html_safe, 'https://mail.google.com', target: '_blank', class: 'nav-link' %>
+        <%= link_to '<i class="fab fa-instagram text-white"></i>'.html_safe, 'https://www.instagram.com', target: '_blank', class: 'nav-link' %>
+        <%= link_to 'Login', products_path, class: 'btn btn-outline-secondary me-2 text-white ' %>
+        </div>
+
+  </div>
+</nav>
