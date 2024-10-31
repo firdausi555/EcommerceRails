@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg sticky-top" style="background: linear-gradient(to right, #00aaff, #0044cc);">
+<nav class="navbar navbar-expand-lg sticky-top" style="background: linear-gradient(to right, #0088cc, #003399);">
   <div class="container ">
 
-  <%= link_to image_tag('logo.png', alt: 'Logo', style: 'height: 40px; margin-right: 0.5rem;') + ' SlipKart', products_path, class: "navbar-brand text-white", style: "font-size: 1.8rem;" %>
+  <%= link_to image_tag('logo.png', alt: 'Logo', style: 'height: 40px; margin-right: 0.5rem;') + ' IKart', products_path, class: "navbar-brand text-white", style: "font-size: 1.8rem;" %>
 
 
 
@@ -14,11 +14,24 @@
       </ul>
       </div>
       <div class="d-flex align-items-center absolute right-0"> <!-- Right-aligned items -->
-        
-        <%= link_to '<i class="fas fa-envelope text-white"></i>'.html_safe, 'https://mail.google.com', target: '_blank', class: 'nav-link' %>
-        <%= link_to '<i class="fab fa-instagram text-white"></i>'.html_safe, 'https://www.instagram.com', target: '_blank', class: 'nav-link' %>
-        <%= link_to 'Login', products_path, class: 'btn btn-outline-secondary me-2 text-white ' %>
-        </div>
+    
+      <!-- Search Bar -->
+      <form action="<%= products_path %>" method="get" style="display: flex; margin-right: 10px;">
+      <input type="text" name="query" placeholder="Search..." style="width: 200px; border-radius: 20px; border: 1px solid #ccc; padding: 5px;"/>
+      <button type="submit" style="border: none; border-radius: 20px; background-color: transparent; color: white; padding: 5px 10px; margin-left: 5px;">
+      <i class="fas fa-search"></i>
+      </button>
+      </form>
+      <%= link_to '<i class="fas fa-envelope text-white"></i>'.html_safe, 'https://mail.google.com', target: '_blank', class: 'nav-link' %>
+      <%= link_to '<i class="fab fa-instagram text-white"></i>'.html_safe, 'https://www.instagram.com', target: '_blank', class: 'nav-link' %>
+      
+      
+      <%= link_to 'Login', products_path, class: 'btn btn-outline-secondary me-2 text-white' %>
+      <%= link_to '<i class="fas fa-shopping-cart text-white ml-4"></i>'.html_safe, products_path, class: 'nav-link' %>
+  </div>
+  
+  
+  
 
   </div>
 </nav>

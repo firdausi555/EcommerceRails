@@ -19,7 +19,7 @@ gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
-gem 'font-awesome-sass', '~> 5.15.4'
+gem 'font-awesome-sass', '~> 6.0.0'
 
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
