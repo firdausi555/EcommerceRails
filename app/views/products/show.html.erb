@@ -1,6 +1,5 @@
 <p style="color: green"><%= notice %></p>
 <div class="m-5 p-10 text-center"> <!-- Added text-center class -->
-  <%= link_to "Edit this product", edit_product_path(@product) %> |
   <%= link_to "Back to products", products_path %>
   
   <% if @product.image_url.present? %>
@@ -14,6 +13,9 @@
   <h2><%= @product.title %></h2>
   <p><%= @product.description %></p>
   <p>Price: ₹<%= @product.price %></p>
+  <% if current_user&.role=="seller" %>
+    <%= link_to "Edit this product", edit_product_path(@product) %> |
 
   <%= button_to "Destroy this product", @product, method: :delete %>
+  <% end %>
 </div>

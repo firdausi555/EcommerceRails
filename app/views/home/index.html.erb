@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title> About Us - IKart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+    .header {
+      background-color: #004080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .content {
+      padding: 20px;
+    }
+    .team {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .team-member {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px;
+      width: 30%;
+      background-color: #e6f0ff;
+    }
+    .footer {
+      background-color: #004080;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1> Welcome to the About Us page of our <%= current_user&.role %> Section</h1>
+  </div>
+
+  <div class="content">
+    <h2>Our Story</h2>
+    <p>Welcome to IKart! Founded in 2024  we have dedicated ourselves to solve the problems. Our journey began with a simple idea: to give knwoledge to world.</p>
+
+    <h2>Our Mission</h2>
+    <p>At IKart, our mission is to Solve problems We are committed to providing easy knowledge that not only meet the highest standards of quality but also foster a positive impact on our community and environment.</p>
+
+    <h2>Our Team</h2>
+    <div class="team-member">
+          <h3> .....</h3>
+          
+        </div>
+    <h2>Our Values</h2>
+    <ul>
+      <li><strong>Integrity:</strong> We uphold the highest ethical standards in our business practices.</li>
+      <li><strong>Customer Focus:</strong> Our customers are at the heart of everything we do.</li>
+      <li><strong>Sustainability:</strong> We are committed to sustainable practices that protect our planet.</li>
+      <li><strong>Community:</strong> We believe in giving back and supporting our local communities.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p>&copy; <%= Date.today.year %> Ikart. All rights reserved.</p>
+    <ul style="list-style: none; padding: 0;">
+      <li><%= link_to 'Privacy Policy', home_index_path %></li>
+      <li><%= link_to 'Terms of Service', home_index_path %></li>
+      <li><%= link_to 'Contact Us', home_index_path %></li>
+    </ul>
+  </div>
+
+</body>
+</html>
