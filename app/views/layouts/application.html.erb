@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <% flash.each do |key, message| %>
+    <div class="alert alert-<%= key %>"><%= message %></div>
+  <% end %>
+  
   
 
     <title>Practice1</title>
@@ -14,7 +18,7 @@
 
   
 
-
+    <%= javascript_include_tag "application" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
