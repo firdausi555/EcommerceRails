@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg sticky-top" style="background: linear-gradient(to right, #0088cc, #003399);">
   <div class="container ">
 
-  <%= link_to image_tag('logo.png', alt: 'Logo', style: 'height: 40px; margin-right: 0.5rem;') + ' IKart', products_path, class: "navbar-brand text-white", style: "font-size: 1.8rem;" %>
+  <%= link_to image_tag('logo.png', alt: 'Logo', style: 'height: 40px; margin-right: 0.5rem;') + ' ISKart', products_path, class: "navbar-brand text-white", style: "font-size: 1.8rem;" %>
 
 
 
@@ -34,8 +34,11 @@
       <% if current_user.present? %>
 <%= link_to 'Logout', destroy_user_session_path,class: 'btn btn-outline-secondary me-2 text-white', method: :delete %>
 <% end %>
+<% if current_user&.role=="buyer" %>
+
       <%= link_to '<i class="fas fa-shopping-cart text-white ml-4"></i>'.html_safe, products_path, class: 'nav-link' %>
   </div>
+  <% end %>
   
   
   

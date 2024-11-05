@@ -1,12 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
-
+  
   # GET /products or /products.json
   def index
     if current_user&.role=="seller"
-      @products =current_user.products
+      @products = current_user.products.page(params[:page]).per(6)
     else
-      @products=Product.all
+      @products = Product.page(params[:page]).per(6)
+      #@products=Product.all
     end
   end
 
