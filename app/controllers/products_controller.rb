@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    if current_user&.role=="seller"
+      @products =current_user.products
+    else
+      @products=Product.all
+    end
   end
 
   # GET /products/1 or /products/1.json
@@ -22,15 +26,17 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    @product = Product.new(product_params)
+    if current_user&.role=="seller"
+      @product = current_user.products.new(product_params)
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @product.save
+          format.html { redirect_to @product, notice: "Product was successfully created." }
+          format.json { render :show, status: :created, location: @product }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
