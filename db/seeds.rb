@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+# db/seeds.rb
+
+# Seed categories
+Category.create(name: "Laptop")
+Category.create(name: "Phone")
+Category.create(name: "Accessories")
+
+puts "Categories seeded successfully!"

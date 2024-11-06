@@ -26,8 +26,8 @@
       <%= link_to '<i class="fab fa-instagram text-white"></i>'.html_safe, 'https://www.instagram.com', target: '_blank', class: 'nav-link' %>
       
       <% if current_user.nil? %>
-      <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-secondary me-2 text-white' %>
-      <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-outline-secondary me-2 text-white' %>
+      <%= link_to 'Login', new_user_session_path, class: 'btn btn-outline-secondary text-white ',style: 'margin-right: 10px;' %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-outline-secondary me-3 text-white' %>
 
       <% end %>
       

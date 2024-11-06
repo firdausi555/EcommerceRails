@@ -15,14 +15,11 @@
   <p><%= @product.description %></p>
   <p>Price: ₹<%= @product.price %></p>
   <p>Quantity: <%= @product.quantity %></p>
-  <p>Category: <%= @product.category.name %></p>
-
 
   <% if current_user&.role == "seller" %>
     <%= link_to "Edit this product", edit_product_path(@product) %> |
     <%= button_to "Destroy this product", @product, method: :delete %>
   <% end %>
 
- 
-
+  
 </div>
