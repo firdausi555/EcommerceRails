@@ -1,28 +1,50 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-  
-    <div>
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag 'sessions', media: 'all' %> <!-- Or 'application' if using one global stylesheet -->
+
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="login-form">
+      <h2 class="form-title">Sign Up</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="input-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, class: 'input-field' %>
+        </div>
+
+        <div class="input-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "off", class: 'input-field' %>
+        </div>
+
+        <div class="input-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'input-field' %>
+        </div>
+
+        <div class="input-group">
+          <%= f.label :role %>
+          <%= f.select :role, ['buyer', 'seller'], { include_blank: true }, class: 'input-field' %>
+        </div>
+
+        <div class="submit-group">
+          <%= f.submit "Sign up", class: "submit-btn" %>
+        </div>
+      <% end %>
     </div>
-  
-    <div>
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-  
-    <div>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-  
-    <div>
-      <%= f.label :role %>
-      <%= f.select :role, ['buyer', 'seller'], { include_blank: true } %>
-    </div>
-  
-    <div>
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
-  
+  </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+
+  <style>
+    /* Global background */
+    body {
+      background-color: #f4f6f9; /* Light gray background */
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Center the login form */
+    .devise-login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Card container */
+    .devise-login-card {
+      background-color: white;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Card shadow */
+    }
+
+    /* Title styling */
+    h2 {
+      color: #007bff; /* Blue color for the title */
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Style for input fields */
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field input[type="email"],
+    .field input[type="password"],
+    .field input[type="checkbox"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .field input[type="email"]:focus,
+    .field input[type="password"]:focus {
+      border-color: #007bff; /* Blue border on focus */
+    }
+
+    /* Style the submit button */
+    .actions input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .actions input[type="submit"]:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    /* Styling for the remember me checkbox */
+    .field input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+    }
+
+    .field label {
+      font-size: 14px;
+    }
+
+    /* Styling for links below the form */
+    .devise-links {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .devise-links a {
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .devise-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      .devise-login-card {
+        padding: 20px;
+        max-width: 100%;
+      }
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="devise-login-container">
+    <div class="devise-login-card">
+      <h2>Login</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "Log in" %>
+        </div>
+      <% end %>
+
+      <div class="devise-links">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
