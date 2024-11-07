@@ -3,12 +3,18 @@ class ProductsController < ApplicationController
   
   # GET /products or /products.json
   def index
-    if current_user&.role=="seller"
-      @products = current_user.products.page(params[:page]).per(6)
+    search_query = params[:query]
+
+    if search_query.present?
+      @products = Product.search(search_query, page: params[:page], per_page: 6)
     else
-      @products = Product.page(params[:page]).per(6)
-      #@products=Product.all
+      @products = Product.page(params[:page]).per(6)  # Default pagination for all products
     end
+    # if current_user&.role=="seller"
+    #   @products = current_user.products.page(params[:page]).per(6)
+    # else
+    #   @products = Product.page(params[:page]).per(6)
+    # end
   end
 
   # GET /products/1 or /products/1.json
