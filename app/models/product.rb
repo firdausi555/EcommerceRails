@@ -6,7 +6,8 @@ class Product < ApplicationRecord
     def search_data
         {
             title:title,
-            description:description
+            description:description,
+            category_id: category_id
         }
     end
 end

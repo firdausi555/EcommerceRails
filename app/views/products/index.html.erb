@@ -2,24 +2,27 @@
 
 <p class="notice"><%= notice %></p>
 
-<!-- Category Dropdown Centered at the Top -->
+<!-- Category Filter Dropdown -->
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-12 d-flex justify-content-center">
-      <%= form_with(url: products_path, method: :get, local: true) do |form| %>
-        <div class="form-group">
-        
-        <%= form.select :category, 
-        options_for_select([["Laptop", "laptop"], ["Phone", "phone"], ["Accessories", "accessories"]], params[:category]), 
-        { prompt: "Choose a category" }, 
-        
-        style: "border: 2px solid #007bff; background-color: #f1f8ff; color: #007bff; font-size: 16px; padding: 10px 30px 10px 10px; border-radius: 5px; transition: border-color 0.3s ease, background-color 0.3s ease; appearance: none; padding-right: 30px; position: relative; background: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22%3E%3Cpath d=%22M6 8L2 4h8L6 8z%22 fill=%23007bff%22 /%3E%3C/svg%3E') no-repeat right 10px center; background-size: 12px; cursor: pointer;" 
-      %>
-      
-      
-      
+      <%= form_tag(root_path, method: :get) do %>
+        <div class="form-group d-flex align-items-center">
+          
+          <!-- Category Dropdown with Manually Added Label and HTML Select Tag -->
+          
+          <select name="category" class="form-control" style="max-width: 200px;">
+            <option value="">Choose a category</option>
+            <option value="laptop" <%= "selected" if params[:category] == "laptop" %>>Laptop</option>
+            <option value="phone" <%= "selected" if params[:category] == "phone" %>>Phone</option>
+            <option value="accessories" <%= "selected" if params[:category] == "accessories" %>>Accessories</option>
+          </select>
 
-                
+          <!-- Apply Button -->
+          <%= submit_tag "Apply", class: "btn btn-primary ml-3", style: "padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #007bff; color: white; cursor: pointer;" %>
+          
+          <!-- Clear Filter Button -->
+          <%= link_to "Clear ", root_path, class: "btn btn-secondary ml-3" %>
         </div>
       <% end %>
     </div>
@@ -27,11 +30,11 @@
 </div>
 
 <!-- Title Section -->
-<div class="text-center mt-4">
-  <h1>Listed Products</h1>
+<div class="text-center">
+  <h1 class="text-primary" style="color: #007bff; text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.5);">Listed Products</h1>
 </div>
 
-<!-- Products Display Section -->
+<!-- Display the Products -->
 <div class="container mt-4">
   <div class="row">
     <% @products.each do |product| %>
