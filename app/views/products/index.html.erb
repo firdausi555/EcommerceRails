@@ -11,7 +11,7 @@
           
           <!-- Category Dropdown with Manually Added Label and HTML Select Tag -->
           
-          <div class="form-group">
+          <div class="form-group m-2">
           <%= select_tag(
             :category, 
             options_for_select(
@@ -24,7 +24,7 @@
         </div>
 
           <!-- Apply Button -->
-          <%= submit_tag "Apply", class: "btn btn-primary ml-3", style: "padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #007bff; color: white; cursor: pointer;" %>
+          <%= submit_tag "Apply", class: "btn btn-primary ml-3", style: "padding: 8px 8px 8px 1 px; font-size: 16px; border-radius: 5px; background-color: #007bff; color: white; cursor: pointer;" %>
           
           <!-- Clear Filter Button -->
           <%= link_to "Clear ", root_path, class: "btn btn-secondary ml-3" %>
