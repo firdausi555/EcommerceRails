@@ -17,7 +17,7 @@
     
       <!-- Search Bar -->
       <form action="<%= products_path %>" method="get" style="display: flex; margin-right: 10px;">
-      <input type="text" name="query" placeholder="Search..." style="width: 200px; border-radius: 20px; border: 1px solid #ccc; padding: 5px;"/>
+  <%= text_field_tag :query, params[:query], placeholder: "Search...", style: "width: 200px; border-radius: 20px; border: 1px solid #ccc; padding: 5px;" %>
       <button type="submit" style="border: none; border-radius: 20px; background-color: transparent; color: white; padding: 5px 10px; margin-left: 5px;">
       <i class="fas fa-search"></i>
       </button>

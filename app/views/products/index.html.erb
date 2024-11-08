@@ -1,10 +1,45 @@
 <%= stylesheet_link_tag 'products', media: 'all' %>
 
 <p class="notice"><%= notice %></p>
-<div class="text-center">
-  <h1>Listed Products</h1>
+
+<!-- Category Filter Dropdown -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+      <%= form_tag(root_path, method: :get) do %>
+        <div class="form-group d-flex align-items-center">
+          
+          <!-- Category Dropdown with Manually Added Label and HTML Select Tag -->
+          
+          <div class="form-group">
+          <%= select_tag(
+            :category, 
+            options_for_select(
+              [["Choose a category", ""]] + Category.all.map { |category| [category.name, category.id] },
+              selected: params[:category]
+            ),
+            class: "form-control", 
+            style: "max-width: 200px;"
+          ) %>
+        </div>
+
+          <!-- Apply Button -->
+          <%= submit_tag "Apply", class: "btn btn-primary ml-3", style: "padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #007bff; color: white; cursor: pointer;" %>
+          
+          <!-- Clear Filter Button -->
+          <%= link_to "Clear ", root_path, class: "btn btn-secondary ml-3" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 
+<!-- Title Section -->
+<div class="text-center">
+  <h1 class="text-primary" style="color: #007bff; text-shadow: 2px 2px 5px rgba(0, 123, 255, 0.5);">Listed Products</h1>
+</div>
+
+<!-- Display the Products -->
 <div class="container mt-4">
   <div class="row">
     <% @products.each do |product| %>
@@ -33,15 +68,14 @@
   </div>
 </div>
 
+<!-- Pagination -->
 <div class="d-flex justify-content-center mt-4">
   <%= paginate @products, :item_class => "page-item", :link_class => "page-link", style: "display: flex; justify-content: center; padding: 10px; margin-top: 30px; list-style: none; background-color: #f8f9fa; border-radius: 30px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); margin: 0 10px;" %>
 </div>
 
-
+<!-- New Product Link for Seller Role -->
 <% if current_user&.role == "seller" %>
-
   <div class="d-flex justify-content-center mt-4">
     <%= link_to "New product", new_product_path, class: 'btn btn-success' %>
   </div>
-
 <% end %>

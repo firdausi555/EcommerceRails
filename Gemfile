@@ -72,3 +72,7 @@ end
 
 gem "pry"
 gem 'kaminari'
+gem 'omniauth-google-oauth2'
+gem 'searchkick'
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'

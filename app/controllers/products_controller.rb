@@ -3,12 +3,35 @@ class ProductsController < ApplicationController
   
   # GET /products or /products.json
   def index
-    if current_user&.role=="seller"
-      @products = current_user.products.page(params[:page]).per(6)
+    search_query = params[:query]
+    if current_user&.role == "seller"
+      # Seller-specific logic
+      if search_query.present? && params[:category].present?
+        @products = current_user.products.search(search_query, page: params[:page], per_page: 6)
+                                      .where(category: params[:category])
+      elsif search_query.present?
+        @products = current_user.products.search(search_query, page: params[:page], per_page: 6)
+      elsif params[:category].present?
+        @products = current_user.products.where(category: params[:category])
+                                         .page(params[:page]).per(6)
+      else
+        @products = current_user.products.page(params[:page]).per(6)
+      end
     else
-      @products = Product.page(params[:page]).per(6)
-      #@products=Product.all
+      # Default behavior for other users (or non-sellers)
+      if search_query.present? && params[:category].present?
+        @products = Product.search(search_query, page: params[:page], per_page: 6)
+                           .where(category: params[:category])
+      elsif search_query.present?
+        @products = Product.search(search_query, page: params[:page], per_page: 6)
+      elsif params[:category].present?
+        @products = Product.where(category: params[:category])
+                           .page(params[:page]).per(6)
+      else
+        @products = Product.page(params[:page]).per(6)
+      end
     end
+    
   end
 
   # GET /products/1 or /products/1.json
@@ -29,6 +52,8 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
+    @categories=Category.all
+
     if current_user&.role=="seller"
       @product = current_user.products.new(product_params)
 
@@ -37,6 +62,8 @@ class ProductsController < ApplicationController
           format.html { redirect_to @product, notice: "Product was successfully created." }
           format.json { render :show, status: :created, location: @product }
         else
+          @categories=Category.all
+
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @product.errors, status: :unprocessable_entity }
         end
