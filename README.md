@@ -1,5 +1,19 @@
 # README
 
+
+To login as 
+=> seller 
+~~ i have added two seller as :
+1.Email:samsung@gmail.com , Password:123456
+2.Email:apple@gmail.com , Password:123456
+
+=>Buyer
+~~ i have added one user as:
+!.Email:sabil@gmail.com , Password:123456
+
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
